@@ -21,6 +21,8 @@ public class HomeController {
     @Autowired
     SongRepository songRepository;
 
+
+
     @RequestMapping("/")
     public String homePage(Model model){
         model.addAttribute("users", new User());
@@ -49,6 +51,18 @@ public class HomeController {
         model.addAttribute("transaction", transactionRepository.findAll());
         model.addAttribute("user", userRepository.findAll());
         return "album";
+    }
+
+    @GetMapping("/admin")
+    public String admin(Model model){
+        model.addAttribute("album", albumRepository.findAll());
+        return "admin";
+    }
+    @GetMapping("/song")
+    public String song(Model model){
+        model.addAttribute("song", songRepository.findAll());
+        return "song";
+
     }
 
     @PostMapping("/processuser")
@@ -80,6 +94,7 @@ public class HomeController {
         transactionRepository.save(transaction);
         return "redirect:/";
     }
+
 
 
 
