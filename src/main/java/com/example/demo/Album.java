@@ -9,8 +9,9 @@ public class Album {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String genre;
-    private String artist;
-    private double price;
+    private String albumname;
+    private String year;
+    private String price;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "transaction_id")
@@ -36,21 +37,6 @@ public class Album {
         this.genre = genre;
     }
 
-    public String getArtist() {
-        return artist;
-    }
-
-    public void setArtist(String artist) {
-        this.artist = artist;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
 
     public Transaction getTransaction() {
         return transaction;
@@ -66,5 +52,29 @@ public class Album {
 
     public void setSongs(Set<Song> songs) {
         this.songs = songs;
+    }
+
+    public String getAlbumname() {
+        return albumname;
+    }
+
+    public void setAlbumname(String albumname) {
+        this.albumname = albumname;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 }
