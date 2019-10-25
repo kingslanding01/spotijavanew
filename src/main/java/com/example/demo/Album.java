@@ -11,7 +11,7 @@ public class Album {
     private String genre;
     private String albumname;
     private String year;
-    private String price;
+    private double price;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "transaction_id")
@@ -20,6 +20,17 @@ public class Album {
     @OneToMany(mappedBy = "album", cascade = CascadeType.ALL,
     fetch = FetchType.LAZY)
     private Set<Song> songs;
+
+    public Album(String genre, String albumname, String year, double price) {
+        this.genre = genre;
+        this.albumname = albumname;
+        this.year = year;
+        this.price = price;
+
+    }
+
+    public Album() {
+    }
 
     public long getId() {
         return id;
@@ -70,11 +81,11 @@ public class Album {
         this.year = year;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 }

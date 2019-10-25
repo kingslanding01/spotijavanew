@@ -18,6 +18,17 @@ public class Song {
     @JoinColumn(name = "album_id")
     private Album album;
 
+    public Song() {
+    }
+
+    public Song(String songname, double duration, String artist, String genre, Album album) {
+        this.songname = songname;
+        this.duration = duration;
+        this.artist = artist;
+        this.genre = genre;
+        this.album = album;
+    }
+
     public long getId() {
         return id;
     }
