@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -29,6 +30,16 @@ public class HomeController {
 
         return "homepage";
     }
+    @RequestMapping("/album")
+    public String albumList(Model model){
+        model.addAttribute("albums", albumRepository.findAll());
+        return "album";
+    }
+    @RequestMapping("/admin")
+    public String adminList(Model model){
+        model.addAttribute("albums", albumRepository.findAll());
+        return "admin";
+    }
 
     @GetMapping("/homepage")
     public String userForm(Model model) {
@@ -45,13 +56,13 @@ public class HomeController {
         return "transaction";
     }
 
-    @GetMapping("/album")
-    public String album(Model model){
-        model.addAttribute("album", new Album());
-        model.addAttribute("transaction", transactionRepository.findAll());
-        model.addAttribute("user", userRepository.findAll());
-        return "album";
-    }
+//    @GetMapping("/album")
+//    public String album(Model model){
+//        model.addAttribute("album", new Album());
+//        model.addAttribute("transaction", transactionRepository.findAll());
+//        model.addAttribute("user", userRepository.findAll());
+//        return "album";
+
 
     @GetMapping("/admin")
     public String admin(Model model){
@@ -94,7 +105,21 @@ public class HomeController {
         transactionRepository.save(transaction);
         return "redirect:/";
     }
-
+    @RequestMapping("/detailalbum/{id}")
+    public String showAlbum(@PathVariable("id") long id, Model model){
+        model.addAttribute("album", albumRepository.findById(id));
+        return "album";
+    }
+    @RequestMapping("/updatealbum/{id}")
+    public String updateAlbum(@PathVariable("id") long id, Model model){
+        model.addAttribute("album", albumRepository.findById(id));
+        return "album";
+    }
+    @RequestMapping("/deletealbum/{id}")
+    public String delAlbum(@PathVariable("id") long id) {
+        albumRepository.deleteById(id);
+        return "redirect:/";
+    }
 
 
 

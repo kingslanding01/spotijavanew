@@ -29,6 +29,30 @@
 
     </ul>
 </nav>
+<font color="black"><h1>Albums</h1></font>
+<table>
+    <tr>
+        <th><font color="black">Album Name</font></th>
+        <br/>
+
+    </tr>
+    <tr th:each="album : ${album}">
+        <td th:text="${album.albumname}">
+        <td th:text="${album.genre}">
+        <td th:text="${album.year}">
+        <td th:text="${album.price}">
+
+        </td>
+        <td>
+
+            <a class="btn btn-outline-dark" th:href="@{/updatealbum/{id}(id=${album.id})}" role="button">Update</a>
+            <a class="btn btn-outline-dark" th:href="@{/detailalbum/{id}(id=${album.id})}" role="button">Details</a>
+            <a class="btn btn-outline-dark" th:href="@{/deletealbum/{id}(id=${album.id})}" role="button">Delete</a>
+        </td>
+    </tr>
+
+</table>
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
