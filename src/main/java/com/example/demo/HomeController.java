@@ -75,6 +75,16 @@ public class HomeController {
         return "song";
 
     }
+    @GetMapping("/updatealbum")
+    public String albumForm(Model model){
+        model.addAttribute("album", albumRepository.findAll());
+        return "updatealbum";
+    }
+    @PostMapping("/displayalbum")
+    public String displayAlbum(Model model){
+        model.addAttribute("album", albumRepository.findAll());
+        return "updatealbum";
+    }
 
     @PostMapping("/processuser")
     public String processUser(@Valid User user,
@@ -93,7 +103,7 @@ public class HomeController {
             return "album";
         }
         albumRepository.save(album);
-        return "redirect:/transaction";
+        return "redirect:";
     }
 
     @PostMapping("/transaction")
@@ -113,7 +123,7 @@ public class HomeController {
     @RequestMapping("/updatealbum/{id}")
     public String updateAlbum(@PathVariable("id") long id, Model model){
         model.addAttribute("album", albumRepository.findById(id));
-        return "album";
+        return "updatealbum";
     }
     @RequestMapping("/deletealbum/{id}")
     public String delAlbum(@PathVariable("id") long id) {
