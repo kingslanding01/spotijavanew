@@ -1,4 +1,4 @@
-#Welcome to the Spotijava application
+#Welcome to the Spotijava application#
 
 ##*completed by Leslie Gaines, Merian Kawera, Eric Erichsen, DeVon Thompson*
 
