@@ -7,4 +7,7 @@
 
 ## Project Details
 
+1.The user has to input login information as well deposit money in order to purchase music.
+2.Then the user goes to album library 
+
 
